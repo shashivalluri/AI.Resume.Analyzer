@@ -1,0 +1,13 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+uploads/*
+reports/*
+data/resume_analyzer.db
+.pytest_cache/
+*.log
+.streamlit/*
+!.streamlit/config.toml
+data/samples/
