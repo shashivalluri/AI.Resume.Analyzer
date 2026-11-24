@@ -1,0 +1,14 @@
+Software Developer
+
+We are looking for a Python developer with SQL and Git experience.
+Required: Python, SQL, REST APIs, Git, Docker, and problem solving.
+Experience: 2+ years of software development.
+Bachelor's degree in Computer Science or a related field.
+
+Responsibilities:
+- Develop and maintain Python applications
+- Build RESTful APIs
+- Work collaboratively in a team
+
+Preferred / Nice to Have:
+FastAPI, PostgreSQL, AWS, and Docker.

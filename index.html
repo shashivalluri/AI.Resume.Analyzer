@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fan Gallery - Enhancv Resume Analyzer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Rubik:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./components/fan-gallery.css">
+  <style>
+    :root {
+      --background: #FAFBFD;
+      --on-surface: #161B1D;
+      --on-surface-variant: #2D3639;
+      --on-surface-muted: #384347;
+      --surface-container: #F2F7FD;
+      --outline: #D1D5DC;
+      --primary: #2DC08D;
+      --primary-hover: #08936A;
+      --secondary: #ABE6D1;
+      --tertiary: #8271E3;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      background: var(--background);
+      color: var(--on-surface);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 48px 24px;
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 24px;
+      max-width: 640px;
+    }
+    .eyebrow {
+      color: var(--primary);
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    h1 {
+      font-family: 'Rubik', sans-serif;
+      font-size: 38px;
+      font-weight: 500;
+      line-height: 1.26;
+      color: var(--on-surface);
+      margin-bottom: 12px;
+    }
+    p {
+      color: var(--on-surface-muted);
+      font-size: 16px;
+      line-height: 1.6;
+    }
+    #gallery-root {
+      width: 100%;
+      max-width: 960px;
+    }
+    .fan-gallery-card {
+      border-radius: 8px;
+      border: 1px solid var(--outline);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), inset 0 0 0 1px rgba(2, 6, 19, 0.04);
+      background: #FFFFFF;
+      transition: box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+    .fan-gallery-card:hover, .fan-gallery-card:focus {
+      border-color: var(--primary);
+      box-shadow: 0 8px 24px -4px rgba(45, 192, 141, 0.25), 0 0 0 2px var(--primary);
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="eyebrow">Enhancv ATS Resume Grader</div>
+    <h1>Make your next move with confidence.</h1>
+    <p>Our ATS resume grader relies on algorithms developed by reading 500,000 resumes. Fast answers, clear insights.</p>
+  </div>
+
+  <div id="gallery-root"></div>
+
+  <script src="./assets/fan-gallery.bundle.js"></script>
+  <script>
+    const items = [
+      {
+        src: "./assets/cards/ats-score.webp",
+        alt: "ATS Resume Grader & Compatibility Analysis"
+      },
+      {
+        src: "./assets/cards/skill-gap.webp",
+        alt: "Skill Gap Diagnostics & Verification"
+      },
+      {
+        src: "./assets/cards/resume-preview.webp",
+        alt: "Structural Completeness & Enhancv Standards"
+      },
+      {
+        src: "./assets/cards/improvements.webp",
+        alt: "Actionable Bullet Point Improvements"
+      },
+      {
+        src: "./assets/cards/job-recommendations.webp",
+        alt: "Target Role Recommendations & Career Radar"
+      }
+    ];
+
+    const container = document.getElementById('gallery-root');
+    if (window.initFanGallery) {
+      window.initFanGallery(container, items, {
+        cardWidth: 162,
+        aspectRatio: 0.8,
+        spacing: 0.69,
+        curve: 0.14,
+        tilt: 14.5,
+        lift: 42,
+        spread: 0.2,
+        stackFrom: "left",
+        speed: 0.7,
+        stagger: 0.09,
+        bounce: 0.35,
+        hoverSpeed: 0.28,
+        radius: 18,
+        entrance: "stack",
+        trigger: "scroll",
+        viewportStart: 75,
+        once: true,
+        showTitle: false
+      });
+    }
+  </script>
+</body>
+</html>

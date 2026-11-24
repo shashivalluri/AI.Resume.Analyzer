@@ -7,8 +7,8 @@ import streamlit as st
 from src.ats_analyzer import analyze_ats_keywords, build_skill_gap
 from src.config import UPLOAD_DIR
 from src.database import initialize_database, save_analysis
-from src.job_analyzer import analyze_job_description
-from src.matching_engine import (
+from utils.job_matcher import (
+    analyze_job_description,
     calculate_experience_relevance,
     calculate_skill_match,
     calculate_text_relevance,
@@ -19,7 +19,7 @@ from src.recommendation_engine import (
     suggest_job_roles,
 )
 from src.report_generator import generate_pdf_report
-from src.resume_parser import ResumeUploadError, parse_resume, validate_resume
+from utils.resume_parser import ResumeUploadError, parse_resume, validate_resume
 from src.scoring_engine import calculate_overall_score, completeness_score, readability_score
 from src.semantic_matcher import calculate_semantic_similarity
 from src.skill_extractor import extract_skills
@@ -28,7 +28,7 @@ from ui.theme import load_theme
 
 
 st.set_page_config(
-    page_title="AI RESUME ANALYZER",
+    page_title="AI Resume Analyzer",
     page_icon="✦",
     layout="wide",
     initial_sidebar_state="expanded",

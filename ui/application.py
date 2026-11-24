@@ -11,10 +11,11 @@ from src.database import (
     get_analysis,
     list_analyses,
 )
-from src.matching_engine import calculate_skill_match
-from src.resume_parser import parse_resume, validate_resume
+from utils.job_matcher import calculate_skill_match
+from utils.resume_parser import parse_resume, validate_resume
 from src.skill_extractor import SKILL_CATALOG, extract_skills
 from src.config import UPLOAD_DIR
+from ui.fan_gallery import render_fan_gallery
 from ui.theme import logo, progress_bar, render_metric
 
 
@@ -38,7 +39,7 @@ def _navigate(label: str) -> None:
 
 def _page_header(title: str, description: str) -> None:
     st.markdown(
-        f"<div class='page-heading'><div><div class='eyebrow'>AI RESUME ANALYZER</div>"
+        f"<div class='page-heading'><div><div class='eyebrow'>AI ATS RESUME ANALYZER</div>"
         f"<h1>{escape(title)}</h1><p>{escape(description)}</p></div></div>",
         unsafe_allow_html=True,
     )
@@ -177,9 +178,9 @@ def _dashboard() -> None:
         )
 
     st.markdown(
-        "<div class='hero'><div class='hero-copy'><div class='eyebrow'>AI RESUME ANALYZER · YOUR CAREER WORKSPACE</div>"
-        "<h1>Make your next move<br>with confidence.</h1>"
-        "<p>Understand how your experience aligns with the role, then turn the insight into a stronger application.</p>"
+        "<div class='hero'><div class='hero-copy'><div class='eyebrow'>AI ATS RESUME ANALYZER · PRECISION COMPATIBILITY ANALYSIS</div>"
+        "<h1>Get your ATS compatibility score<br>in real time.</h1>"
+        "<p>Light monochrome architecture built on Inter Tight type, tonal surfaces and high-contrast precision. Understand how your experience aligns with any target role and produce explainable insights.</p>"
         "</div><div class='hero-orbit'><span>✦</span><i></i><b></b></div></div>",
         unsafe_allow_html=True,
     )
@@ -193,6 +194,27 @@ def _dashboard() -> None:
             "Private local processing &nbsp;·&nbsp; Clear next steps</div>",
             unsafe_allow_html=True,
         )
+
+    render_fan_gallery(
+        card_width=162,
+        aspect_ratio=0.8,
+        spacing=0.69,
+        curve=0.14,
+        tilt=14.5,
+        lift=42,
+        spread=0.2,
+        stack_from="left",
+        speed=0.7,
+        stagger=0.09,
+        bounce=0.35,
+        hover_speed=0.28,
+        radius=18,
+        entrance="stack",
+        trigger="scroll",
+        viewport_start=75,
+        once=True,
+        show_title=False,
+    )
 
     empty_detail = "Run your first analysis to see this metric."
     columns = st.columns(4)
@@ -283,7 +305,7 @@ def _dashboard() -> None:
                     ],
                 }
             ).set_index("Component")
-            st.bar_chart(chart_data, height=220, color="#635BFF")
+            st.bar_chart(chart_data, height=220, color="#222222")
         else:
             _empty_state(
                 "Insights appear after analysis",
@@ -521,7 +543,7 @@ def _analysis_results() -> None:
                 ],
             }
         ).set_index("Component")
-        st.bar_chart(breakdown, height=250, color="#635BFF")
+        st.bar_chart(breakdown, height=250, color="#222222")
     with chart_right:
         st.markdown(
             "<div class='section-heading compact'><div><div class='eyebrow'>KEYWORD SIGNAL</div>"
@@ -535,7 +557,7 @@ def _analysis_results() -> None:
                 "Count": [len(ats["matched"]), len(ats["missing"])],
             }
         ).set_index("Status")
-        st.bar_chart(keyword_chart, height=250, color="#8B7CFF")
+        st.bar_chart(keyword_chart, height=250, color="#222222")
 
     st.markdown(
         "<div class='section-heading compact'><div><div class='eyebrow'>ADDITIONAL SIGNALS</div>"

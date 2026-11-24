@@ -1,6 +1,6 @@
 # AI RESUME ANALYZER
 
-**AI RESUME ANALYZER** is a local-first Streamlit application that compares a PDF or DOCX resume against a job description and produces an explainable compatibility analysis. Its light workspace, charcoal navigation, and violet accents carry through the analysis dashboard and downloadable PDF report.
+**AI RESUME ANALYZER** is a local-first Streamlit application that compares a PDF or DOCX resume against a job description and produces an explainable compatibility analysis. Its light monochrome interface is crafted to the Awwwards design system: Mist (#E9E9E9) surfaces, Charcoal (#222222) typography in Inter Tight, flat tonal elevation, and 72px rounded corners.
 
 ## Product areas
 
@@ -19,7 +19,9 @@
 ## Architecture
 
 ```text
-app.py                     Streamlit presentation and application orchestration
+app.py / your_app.py        Streamlit presentation and application orchestration
+utils/resume_parser.py      Public resume parsing utility exports
+utils/job_matcher.py        Public job analysis and matching utility exports
 src/resume_parser.py       PDF/DOCX parsing and contact/section extraction
 src/skill_extractor.py     Configurable skill taxonomy and evidence extraction
 src/job_analyzer.py        Job title, qualification, skill, and experience analysis
@@ -31,9 +33,12 @@ src/recommendation_engine.py Evidence-based recommendations
 src/database.py            Privacy-minimized SQLite persistence
 src/report_generator.py    Branded multi-page ReportLab PDF output
 ui/application.py          Streamlit navigation and page presentation
+ui/fan_gallery.py           Interactive ReactDrops Fan Gallery component for Streamlit
 ui/theme.py                Shared Streamlit branding and metric components
-assets/styles.css          Responsive charcoal, violet, and light-surface design system
-.streamlit/config.toml     Light theme defaults and 5 MB upload limit
+components/fan-gallery.tsx  ReactDrops Fan Gallery React/TypeScript component
+components/fan-gallery-example.tsx Configured Fan Gallery showcase
+assets/styles.css          Awwwards monochrome design system (Mist, Charcoal, 72px corners)
+.streamlit/config.toml     Awwwards theme defaults and 5 MB upload limit
 ```
 
 ## Installation
@@ -45,7 +50,7 @@ python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 python -m pip install --upgrade pip
 python -m pip install -r requirements.txt
-streamlit run app.py
+streamlit run your_app.py
 ```
 
 Open the local URL printed by Streamlit.

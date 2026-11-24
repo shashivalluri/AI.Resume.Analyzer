@@ -1,5 +1,6 @@
 from pathlib import Path
 from html import escape
+import base64
 
 import streamlit as st
 
@@ -13,12 +14,17 @@ def load_theme() -> None:
 
 
 def logo() -> str:
+    logo_path = BASE_DIR / "assets" / "logo.png"
+    logo_image = ""
+    if logo_path.exists():
+        encoded_logo = base64.b64encode(logo_path.read_bytes()).decode("ascii")
+        logo_image = (
+            f"<img src='data:image/png;base64,{encoded_logo}' "
+            "alt='' aria-hidden='true'/>"
+        )
     return (
         "<div class='brand-lockup' aria-label='AI RESUME ANALYZER'>"
-        "<div class='brand-mark'><svg viewBox='0 0 32 32' role='img' aria-hidden='true'>"
-        "<path d='M16 3.5 18.8 13l9.7 3-9.7 2.8-2.8 9.7-3-9.7-9.5-2.8 9.5-3L16 3.5Z' "
-        "fill='none' stroke='currentColor' stroke-width='2.1' stroke-linejoin='round'/>"
-        "<circle cx='24.7' cy='7.2' r='1.5' fill='currentColor'/></svg></div>"
+        f"<div class='brand-mark'>{logo_image or '<span style=\"font-size:16px;font-weight:700;\">✦</span>'}</div>"
         "<div><div class='brand-name'>AI RESUME</div>"
         "<div class='brand-subtitle'>ANALYZER</div></div></div>"
     )
@@ -32,6 +38,6 @@ def render_metric(label: str, value: str, detail: str = "") -> str:
     )
 
 
-def progress_bar(value: float, color: str = "#4f46e5") -> str:
+def progress_bar(value: float, color: str = "#222222") -> str:
     value = max(0.0, min(100.0, float(value)))
     return f"<div class='progress'><span style='width:{value:.1f}%;background:{color}'></span></div>"
