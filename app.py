@@ -1,6 +1,7 @@
 import hashlib
 import uuid
 from pathlib import Path
+from PIL import Image
 
 import streamlit as st
 
@@ -26,10 +27,12 @@ from src.skill_extractor import extract_skills
 from ui.application import render_application
 from ui.theme import load_theme
 
+LOGO_PATH = Path(__file__).parent / "assets" / "logo.png"
+PAGE_ICON = Image.open(LOGO_PATH) if LOGO_PATH.exists() else "✦"
 
 st.set_page_config(
     page_title="AI Resume Analyzer",
-    page_icon="✦",
+    page_icon=PAGE_ICON,
     layout="wide",
     initial_sidebar_state="expanded",
 )
